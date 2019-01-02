@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { 
+	background-image: url({{url_for('static',filename='past.jpg')}});
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.h1 {
+   font-size:60px;
+   float:left;
+   font-weight: bold;
+}
+ul{
+ list-style-type:none;
+ margin:0;
+ padding:0;
+ overflow:hidden;
+ background-color:#FAFAD2;
+}
+li{
+ float:right;
+}
+li a{
+ display:block;
+ color: black;
+ text-align:center;
+ padding:16px;
+ text-decoration:none;
+}
+li a:hover{
+ background-color:grey;
+}
+.h2{font-size:40px; background-color:#DEB887; margin-left: 30px; width: 30%;}
+.h22{font-size:30px;}
+.divInf{
+	background-color:#DEB887; 
+	width: 80%; 
+	height: 300px; 
+	margin-left: 30px;
+	margin-top: 40px;
+}
+
+.button{
+  background-color: #B22222;
+  color: white;
+  padding: 7px 20px;
+  
+}
+.button2{ background-color: #9ACD32; margin-left: 800px; margin-top: -100px; }
+.buttons{
+	margin-left: 650px;
+	margin-top: -80px;
+}
+.imgplace{
+	margin-left: 600px;
+	margin-top: -200px;
+}
+.info{
+	margin-left: 90px;
+}
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+.rating > input:checked ~ label, 
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  }
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+.ratediv{
+	background-color: white;
+	width: 200px;
+	height: 90px;
+	margin-top: -400px;
+	margin-left: 400px;
+	
+}
+</style>
+</head>
+<body>
+	<ul>
+	<li class="h1">OSCA TOUR</li>
+	<li><a href="{{url_for('login')}}">Logout</a></li>
+  <li><a href="{{url_for('pastreservations')}}">Past Reservations</a></li>
+  <li><a href="{{url_for('allregional')}}">Regional</a></li>
+  <li><a href="{{url_for('allcruise')}}">Cruise</a></li>
+  <li><a href="{{url_for('home')}}">Home</a></li>
+	</ul> 
+	<h2 class="h2">Past Reservations</h2>
+
+	<div>
+		{% for i in result %}
+		<div class="divInf" class={{i[3]}}>
+			
+			<div class="info">
+				<br><br>
+				<p><b>Tour:</b> {{i[1]}}</p>
+				<p><b>Start date:</b> {{i[2]}}</p> 
+				<p><b>End date:</b> {{i[3]}}</p>
+				<p><b>Price:</b> {{i[5]}}</p>
+				<p><b>Rating:</b> {{i[4]}}</p>
+
+			</div>
+    
+			<img class="imgplace" src="../{{i[-1]}}" width="120" height="120"/>
+			<button class="button button2" type="button">Rate Reservation</button>
+		</div>
+        {% endfor %}
+     
+	</div>
+	<div class="ratediv">
+		<h2 class="h22">Rate this tour</h2>
+	<form action="" method="POST">
+	<fieldset class="rating">
+	    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+	    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Good - 4 stars"></label>
+	    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Average - 3 stars"></label>
+	    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+	    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Worst - 1 star"></label>
+	</fieldset>
+	<button name="clickies">save</button></a>
+    </form>
+	</div>
+
+</body>
+</html>

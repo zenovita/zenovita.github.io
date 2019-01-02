@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { 
+	background-image: url({{url_for('static',filename='touristinf.jpg')}});
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.h1 {
+   font-size:60px;
+   float:left;
+   font-weight: bold;
+}
+ul{
+ list-style-type:none;
+ margin:0;
+ padding:0;
+ overflow:hidden;
+ background-color:#FAFAD2;
+}
+li{
+ float:right;
+}
+li a{
+ display:block;
+ color: black;
+ text-align:center;
+ padding:16px;
+ text-decoration:none;
+}
+li a:hover{
+ background-color:grey;
+}
+.h2{font-size:40px; background-color:#F4A460; width: 54%; margin-left: 10px;}
+.div1{
+	background-color:#F4A460;
+	width: 54%; 
+	height: 300px; 
+	margin-left: 10px; 
+	margin-top: 10px;
+
+}
+.div2{
+	background-color:#FFF5EE;
+	width: 50%; 
+	height: 60px; 
+	margin-left: 10px; 
+	margin-top: 10px;
+}
+.button {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 250px;
+  margin-top: 10px;
+  
+ }
+ .input{
+	width: 70%;
+	margin-left: 20px;
+	height: 20px;
+}
+.cusinfo{
+	margin-left: 40px;
+}
+</style>
+</head>
+<body>
+<ul>
+	<li class="h1">OSCA TOUR</li>
+	<li><a href="{{url_for('login')}}">Logout</a></li>
+	<li><a href="{{url_for('pastreservations')}}">Past Reservations</a></li>
+	<li><a href="{{url_for('allregional')}}">Regional</a></li>
+	<li><a href="{{url_for('allcruise')}}">Cruise</a></li>
+	<li><a href="{{url_for('home')}}">Home</a></li>
+	
+</ul>
+<h2 class="h2">Tourist Information/Other Customers</h2>
+<div>
+
+<form action="", method="POST">
+{% for i in range(total - 1)%}
+
+<div class="div1">
+	<div class="cusinfo">
+		
+			<br><br><br>
+	  		First name:&emsp;&emsp;&emsp;<input class="input" type="text" name="firstname{{i}}"><br><br>
+	  		Last name:&emsp;&emsp;&emsp;<input class="input" type="text" name="lastname{{i}}"><br><br>
+	  		Birth date:&emsp;&emsp;&emsp;&nbsp;<input class="input" type="text" placeholder="YYYY-MM-DD"  name="birthdate{{i}}"><br><br>
+	  		TC:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input class="input" type="text" name="tc{{i}}"><br><br>
+ 
+	</div>
+
+</div>
+{% endfor %}
+<div>
+        <button value="go" class="button" name="clickies">Make Reservation</button></a>
+    </form>
+
+
+
+</body>
+</html>
