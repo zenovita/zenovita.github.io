@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Proposal
+title: aNoThEr PaGe
 description: This is just another page
 ---
 
 ## Welcome to another page
 
-_yay_
+_Geri dön yeğen yanlış yoldasın_
 
 [back](./)
